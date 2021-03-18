@@ -1,0 +1,13 @@
+Finger exercise: Consider a digraph with weighted edges. Is the first path found
+by BFS guaranteed to minimize the sum of the weights of the edges?
+
+Ans : 不能,带权图不能用广度优先解决。因为可以将广度优先解决理解为 搜索权重相同的图。
+也就是a层到b层的边的权重是一样的，比的是谁先找到目标节点。
+
+补充 深度优先可以解决带权图的最短路径问题,基本上改的就是新建一个Class Weighted_Edge。
+而 Edge其实可以看做是 Weighted_Edge的一个特例。
+
+然后修改
+if shortest_path is None or len(path) < len(shortest_path) 这部分代码。
+可以改为
+if shortest_path is None or 当前path的总权重 < 最短路径的总权重
