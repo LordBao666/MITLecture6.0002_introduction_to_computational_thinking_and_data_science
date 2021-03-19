@@ -1,0 +1,86 @@
+Problem A
+
+1. What were your results from compare_cow_transport_algorithms? Which
+algorithm runs faster? Why?
+贪心算法用时0.0s (意味着很小)
+贪心算法挑选出的trip:
+['Betsy']
+['Henrietta']
+['Herman', 'Maggie']
+['Oreo', 'Moo Moo']
+['Millie', 'Milkshake', 'Lola']
+['Florence']
+
+暴力算法用时1.9636940956115723s
+暴力算法挑选出的trip:
+['Henrietta']
+['Milkshake', 'Oreo', 'Lola']
+['Herman', 'Maggie']
+['Betsy']
+['Millie', 'Moo Moo', 'Florence']
+
+假设总的cow的数量是n
+贪心算法更快。我在贪心算法中用到了排序用时 O(nlogn).
+剩下来的就是贪心算法，在worst_case下,是多项式级别的。
+
+暴力算法。暴力算法，调用提供的函数get_partition() ，本质是求得一个list的所有子集。
+而子集的数量是 指数式的，凭这就知道暴力算法的速度是不行的。
+当然,提供的函数get_partition() 产生的list集合 ，中的list顺序不是按照
+list的长度升序。这也就意味着，我还有对2^n个子集排序。 那么算法复杂度是 O( n 2^n )级别
+然后挑选合适的list,worst_case 是 O(2^n)  总之上了指数级别的，都比较麻烦
+
+2. Does the greedy algorithm return the optimal solution? Why/why not?
+并没有。这个贪心算法，贪的是 总的cow的weight是一定的,那么我每次装最大的,就能更快地向装完所有weight靠近。
+但是,贪心算法是局部最优的，并不一定是最优的。这个还是根据具体数据说话
+Oreo,6
+Moo Moo,3
+Milkshake,2
+Millie,5
+Lola,2
+Florence,2
+比如这一组  按照贪心算法就是三趟
+['Oreo', 'Moo Moo']
+['Millie', 'Milkshake', 'Lola']
+['Florence']
+但是我们可以观察出
+['Oreo', 'Milkshake', 'Lola']
+['Millie','Moo Moo','Florence']才是最好的
+
+
+
+3. Does the brute force algorithm return the optimal solution? Why/why not?
+必须的,要么怎么叫作暴力法。
+
+
+Problem B
+
+1. Explain why it would be difficult to use a brute force algorithm to solve this problem if there
+were 30 different egg weights. You do not need to implement a brute force algorithm in order to
+answer this.
+这是一颗有30棵分支的决策树,最长的深度达到了target_weight的长度。最短的深度,在最好的情况下(也就是类似于100 除以25这种刚好除得尽的)
+ 为target_weight/ max(egg_weights).
+假设算法规模足够大 也就是 target_weight 足够大,  我们使之为n。
+那么算法复杂度至少为 O( 30^   (n /  max(egg_weights))  )
+也就是 O (30^n)
+
+其实就算是  2种,使用暴力解法，那也是 O(2^n)  所谓的暴力解法,说白了就是在限制下尝试所有情况,而这类天然的指数问题
+用暴力解决是显得苍白的。
+
+
+2. If you were to implement a greedy algorithm for finding the minimum number of eggs
+needed, what would the objective function be? What would the constraints be? What strategy
+would your greedy algorithm follow to pick which coins to take? You do not need to implement a
+greedy algorithm in order to answer this.
+找最大的egg_weight,不行就找次大的egg_weight。
+贪心算法不一定能找到最好的。但是（1,5,10,20)用贪心绝对能找到最好的。
+因为？  我也暂时不知道为什么  只知道前者都是后者的因子。貌似人民币也是这么设计的。
+但是好像听说20元并不是必需的?????
+
+
+3. Will a greedy algorithm always return the optimal solution to this problem? Explain why it is
+optimal or give an example of when it will not return the optimal solution. Again, you do not need
+to implement a greedy algorithm in order to answer this.
+我去,我第二问想到的,在第3问出现了。
+这个问题 有时间去看看这两篇论文吧(Google 下面两篇文章)
+What this Country Needs Is an 18 Piece.
+A polynomial-time algorithm for the change-making problem
