@@ -58,24 +58,19 @@ class RandomWalkTestCase(unittest.TestCase):
     def test_drunk_test_with_graph(self):
         walk_length = (10, 100, 1000)
         num_trials = 1000
-        drunk_type = [UsualDrunk,SouthDrunk,OnlyXDrunk]
-        drunk_test_with_graph(walk_length,num_trials,drunk_type)
+        drunk_type = [UsualDrunk, SouthDrunk, OnlyXDrunk]
+        drunk_test_with_graph(walk_length, num_trials, drunk_type)
 
     def test_plot_locs(self):
         drunk_type = [UsualDrunk, SouthDrunk, OnlyXDrunk]
         num_steps = 100
         num_trials = 100
-        plot_locs(drunk_type,num_steps,num_trials)
+        plot_locs(drunk_type, num_steps, num_trials)
 
     def test_trace_walk(self):
-        drunk_type = [UsualDrunk, SouthDrunk, OnlyXDrunk,WestDrunk]
+        drunk_type = [UsualDrunk, SouthDrunk, OnlyXDrunk, WestDrunk]
         num_steps = 100
-        trace_walk(drunk_type,num_steps)
-
-    def test_trace_walk(self):
-        drunk_type = [UsualDrunk, SouthDrunk, OnlyXDrunk,WestDrunk]
-        num_steps = 100
-        trace_walk(drunk_type,num_steps)
+        trace_walk(drunk_type, num_steps)
 
 
 if __name__ == '__main__':

@@ -140,7 +140,7 @@ def plot_locs(drunk_kinds, num_steps, num_trials):
 def trace_walk(drunk_kinds, num_steps):
     styles = StyleIterator(["ob", "xg", "^r", "+m"])
     # field = Field()
-    field = OddField(2000,200,200)
+    field = OddField(1500,200,200)
     for drunk_kind in drunk_kinds:
 
         start = Location(0.0, 0.0)
