@@ -1,0 +1,7 @@
+Finger exercise: Sally averages 5 strokes a hole when she plays golf. One day, she
+took 40 strokes to complete the first nine holes. Her partner conjectured that she
+would probably regress to the mean and take 50 strokes to complete the next
+nine holes. Do you agree with her partner?
+
+
+样本太小,均值回归理论并不能适用，所以答案是No.这是赌徒谬误的体现。

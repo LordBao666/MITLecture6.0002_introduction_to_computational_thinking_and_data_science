@@ -1,0 +1,7 @@
+Finger exercise: In Figure 15.18, why are the bins near the middle of the histo-
+gram taller than the the bins near the sides? Hint: think about why 7 is the most
+common outcome of rolling a pair of dice.
+
+
+更简化一点, 在1和2之间随机取数2次，并做加法。那么 2 的概率是 1/4,,4的概率是1/4,而3的概率是1/2。
+同理中间的取值组合更多,所以中间的更高。
