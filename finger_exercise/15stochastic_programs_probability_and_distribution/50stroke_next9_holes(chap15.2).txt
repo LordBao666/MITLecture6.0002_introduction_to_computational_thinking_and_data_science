@@ -4,4 +4,6 @@ would probably regress to the mean and take 50 strokes to complete the next
 nine holes. Do you agree with her partner?
 
 
-样本太小,均值回归理论并不能适用，所以答案是No.这是赌徒谬误的体现。
+按照均值回归的理论，应该是 下一次 40 stokes 再打 9holes的可能性不那么高。而他的搭档的说法是赌徒谬误的体现，
+即 开始的  40 strokes 和 接下来的 50strokes  的平均 5 stoke 应该是 1hole，然而这是错误的,毕竟算不上大数。
+除了这个原因以外，还需要说的是，这是独立重复事件,前面的40次应该对后面的50次没影响。

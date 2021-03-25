@@ -17,10 +17,10 @@ class FairRoulette(object):
 
     下面仅涉及赌某个数值的情况
     下面的一些词语：
-    pocket ：格子(pocket本意就有口袋意思)
+    pocket ：格子(pocket本意就有口袋意思),每种格子对应一种号码
     ball : 小球
-    pocket_odds : 格子的机会
-    spin :  旋转
+    pocket_odds : 格子的机会（详细看后面吧）
+    spin :  旋转（表示进行一轮）
     bet ：下注，赌注
     """
 
@@ -52,3 +52,24 @@ class FairRoulette(object):
 
     def __str__(self):
         return "Fair Roulette"
+
+
+class EuropeanRoulette(FairRoulette):
+    def __init__(self):
+        FairRoulette.__init__(self)
+        # European Roulette 多了个绿0 ,实际上就是多了一个号码而已(使其为37）,但是这个号码不能选,而且赔率也不包含从部分。
+        self.pockets.append(37)
+
+    def __str__(self):
+        return "European Roulette"
+
+
+class AmericanRoulette(FairRoulette):
+    def __init__(self):
+        FairRoulette.__init__(self)
+        # European Roulette 多了个绿0 和绿00,实际上就是多了两个号码而已(使其为37,38）但是这个号码不能选。而且赔率也不包含从部分。
+        self.pockets.append(37)
+        self.pockets.append(38)
+
+    def __str__(self):
+        return "American Roulette"
