@@ -14,18 +14,22 @@ import math
 不高.从这一层面通过标准差来评估  mean是不是值得信赖的。
 
 查看 mean_head_minus_tails.png 和 sd_head_minus_tails.png
-标准差不能孤立来看，要结合均值。 上面那个ratio 的mean 和 std能分析的原因是 mean趋于平稳而std下降，显然说明 mean的可信度越来越高。
+标准差不能孤立来看，要结合均值。 上面那个ratio 的mean 和 std能分析的原因是 mean趋于平稳而std下降，并且std的
+级别比mean小得多,显然说明 mean的可信度越来越高。
+
 在mean 和 std都变动的情况下，不能仅仅看std的变化情况。
-
-
 这个时候要介入变异系数cv ,当mean经常变化的时候，变异系数比 标准差更加可靠。cv越小，数据越集中。
 具体可以参考右边的 ratio_cv_head_over_tail.png  和 cv_head_minus_tails.png
 
-ratio的cv  和 std表明的结果是差不多的,而 地diff 的 cv  和 std表明则是不一样的，从某种程度而言,std把我们误导了。
+ratio的cv  和 std表明的结果是差不多的,而 diff 的 cv  和 std表明则是不一样的，从某种程度而言,std把我们误导了。
 书上将trial扩大到1000,发现cv仍然是上下波动的,而且控制在0.74到0.78.
 这说明两个事情,
 1.head - tails的分散程度  和 num_flips无关。 
-2. 当cv在1之间，都视作是低方差，即cv在1之间是head-tails的离散程度低的必要条件。
+2. 当cv在1之间，都视作是低方差，即cv在1之间是head-tails的离散程度低的必要条件,注意是必要条件。
+
+还有cv的优势是  可以忽略 量纲（kg，m)  和 不同mean之间的 离散程度。
+缺点是  如果mean比较小的话,那么mean微弱的变化 都能导致cv很大的变化,而且当mean为0的时候是没有定义的。
+标准差可以构建置信水平,而cv是不行的。
 """
 
 
@@ -43,7 +47,7 @@ def variance(sequence):
 
 def std_dev(sequence):
     """
-    返回标准方差
+    返回标准差
     """
     return variance(sequence) ** 0.5
 
@@ -106,7 +110,7 @@ def flip_plot(min_exp, max_exp, num_trials):
             except ZeroDivisionError:
                 continue
 
-        # 求得num_trials次下,num_flip次的  ratio 的均值 方差 diff的均值 方差
+        # 求得num_trials次下,num_flip次的  ratio 的均值标准差 diff的均值 标准差
         ratio_mean.append(sum(ratios) / len(ratios))
         ratio_sd.append(std_dev(ratios))
         diff_mean.append(sum(diffs) / len(diffs))
