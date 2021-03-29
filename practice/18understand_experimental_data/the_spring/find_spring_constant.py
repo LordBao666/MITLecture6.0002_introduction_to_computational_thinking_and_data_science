@@ -35,7 +35,6 @@ def find_constant_of_spring(file_name):
     distances = pylab.array(x_vals)
     mass = pylab.array(y_vals)
     force = mass * 9.81
-    print(force)
     model = pylab.polyfit(force, distances, 1)
     est_distances = pylab.polyval(model, force)
     pylab.plot(force, distances, 'og',
