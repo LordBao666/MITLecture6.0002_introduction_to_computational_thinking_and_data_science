@@ -62,7 +62,7 @@ def fitData(file_name, polynomial_degrees, to_print=False):
         est_y_vals = pylab.polyval(model, x_vals)  # 根据model 和 自变量,预估因变量
         coefficient_of_determination = get_coefficient_of_determination(y_vals, est_y_vals)
         pylab.plot(x_vals, est_y_vals,
-                   label='Degree of  ' + str(degree) + ",CoD:"
+                   label='Degree of  ' + str(degree) + ",R2:"
                          + str(round(coefficient_of_determination, 4)))
         if to_print:
             variance = ((y_vals - est_y_vals) ** 2).sum()
@@ -74,4 +74,4 @@ def fitData(file_name, polynomial_degrees, to_print=False):
 
 
 # 查看 result.png
-fitData("mysteryData.txt", (1, 2, 4, 8), True)
+fitData("mysteryData.txt", (1, 2, 4, 8,16), True)
