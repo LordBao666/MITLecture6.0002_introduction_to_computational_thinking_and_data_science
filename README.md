@@ -4,4 +4,4 @@
 and it may be a little bit hard for those who are not native Chinese speakers to read .I will update the repository at any time.
 <br>
 <br>
-&emsp;&emsp;MITLecture6.0002的pset以及来自于课本和讲义上的一些重要的代码。
+&emsp;&emsp;MITLecture6.0002的pset以及来自于课本和讲义上的一些重要的代码。学习用时2021/3/16--2021/4/6。
